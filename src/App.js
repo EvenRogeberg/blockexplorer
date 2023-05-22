@@ -123,7 +123,7 @@ function App() {
         <br></br>
       
         <button onClick={handleShowNFTsClick}>
-          {showNFTs ? 'Hide accounts NFTs' : 'Search for accounts NFTs'}
+          {showNFTs ? 'Hide NFT' : 'Get NFT attribute and floor price'}
         </button>
         {showNFTs && <NFTsPage />}
 

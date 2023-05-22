@@ -17,7 +17,7 @@ let [tokenId, setTokenId] = useState("");
 
 async function getNft(address, id){
     try {
-        console.log("i try, id "+id+", address: "+address)
+    
         const attributes = await alchemy.nft.getNftMetadata(address, id);
         setAttributes(attributes.rawMetadata.attributes);
         const floor = await alchemy.nft.getFloorPrice(address);

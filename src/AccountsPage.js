@@ -47,7 +47,7 @@ return (
       </button>
       <br></br>
       {showBalance ? (
-        `This wallet has a balance of ${balance} ETH`
+        "This account got "+balance+" eth"
       ) : (
         <div></div>
       )}
