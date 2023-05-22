@@ -1,6 +1,7 @@
 import { Alchemy, Network } from 'alchemy-sdk';
 import { useEffect, useState } from 'react';
 import AccountsPage from "./AccountsPage";
+import NFTsPage from "./NFTsPage";
 
 import './App.css';
 
@@ -26,6 +27,9 @@ function App() {
   const [showTransactions, setShowTransactions] = useState(false);
   const [selectedTransaction, setSelectedTransaction] = useState(null);
   const [showAccount, setShowAccount] = useState(false);
+  const [showNFTs, setShowNFTs] = useState(false);
+  
+  
 
   useEffect(() => {
     async function getBlockNumber() {
@@ -64,6 +68,10 @@ function App() {
     setShowAccount(!showAccount);
   }
 
+  async function handleShowNFTsClick() {
+    setShowNFTs(!showNFTs);
+  }
+
   return (
     <div className="App">
       <div>
@@ -71,7 +79,7 @@ function App() {
       </div>
       <div className="intro">
         <div>
-          Block Number: {curBlock === undefined ? "Pending..." : blockNumber}
+          Latest block is blockmumber: {curBlock === undefined ? "Pending..." : blockNumber}
         </div>
         <div className='showTransactions'>
           <button
@@ -79,7 +87,7 @@ function App() {
               setShowTransactions(!showTransactions);
             }}
           >
-            {showTransactions ? "Hide Transactions" : "Show Transactions"}
+            {showTransactions ? "Hide Transactions" : "Show transactions in this block"}
           </button>
 
           {showTransactions && curBlock && (
@@ -102,12 +110,22 @@ function App() {
           )}
         </div>
 
+        <div>
+
+
         <button onClick={handleShowAccountClick}>
-          {showAccount ? 'Hide Accounts' : 'Show Accounts'}
+          {showAccount ? 'Hide Accounts' : 'Search for accounts'}
         </button>
 
         {showAccount && <AccountsPage />}
+
+        </div>
+        <br></br>
       
+        <button onClick={handleShowNFTsClick}>
+          {showNFTs ? 'Hide accounts NFTs' : 'Search for accounts NFTs'}
+        </button>
+        {showNFTs && <NFTsPage />}
 
       </div>
     </div>
